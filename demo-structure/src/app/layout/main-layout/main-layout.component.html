@@ -1,17 +1,17 @@
 <div
   style="
     display: flex;
-    flex-direction: column;
     align-content: center;
     justify-content: center;
     align-items: center;
   "
 >
-  <!-- <ng-container *ngIf="apiClientes$ | async as clientes">
-        <app-display-model [title]="'API'" [content]="clientes[0]"></app-display-model>
-    </ng-container> -->
-  ⬇
-  <app-display-model [title]="'FEATURES'" [content]="''"></app-display-model>
-  ⬇
-  <app-display-model [title]="'APP'" [content]="''"></app-display-model>
+    <ng-container *ngIf="apiClientes$ | async as clientes">
+          <app-display-model [title]="'Clients (Features implementation adapter)'" [content]="clientes"></app-display-model>
+      </ng-container>
+    
+    <ng-container *ngIf="apiPaycard$ | async as paycards">
+          <app-display-model [title]="'Paycard (No features implementation adapter)'" [content]="paycards"></app-display-model>
+      </ng-container>
+
 </div>

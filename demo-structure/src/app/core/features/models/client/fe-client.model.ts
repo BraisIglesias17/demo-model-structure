@@ -5,14 +5,15 @@ export interface IFeClient extends IApiClient {
   age: Date;
 }
 
-export class FeClient extends AbstractAdapter {
+// antes extends AbstractAdapter
+export class FeClient  {
   name: string = '';
   surname: string = '';
   fullName: string = '';
   age: number = 0;
 
   constructor(data?: ApiClient) {
-    super();
+    //super();
     if (data) {
       this.name = data.name;
       this.surname = data.surname;
