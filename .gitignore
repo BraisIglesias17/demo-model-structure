@@ -1,0 +1,22 @@
+# Node dependencies
+/node_modules
+
+# Compiled output
+/dist
+/e2e/*.log
+/e2e/*.png
+/e2e/*.xml
+/e2e/*.junit
+
+# Local environment files
+/src/environments/*.js
+/src/environments/*.js.map
+/src/environments/*.ts
+
+# IDE and editor files
+.vscode
+.idea
+
+# npm package files
+package-lock.json
+npm-debug.log
