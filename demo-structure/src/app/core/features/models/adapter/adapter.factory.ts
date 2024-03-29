@@ -8,14 +8,14 @@ export class AbstractAdapter {
 }
 
 export class AdapterFactory {
-  static create<T, V>(entity: T) {
+  static adapt<T>(entity: T) {
     switch (true) {
       case entity instanceof ApiClient:
         console.log('RETURNING FECLIENT');
-        return FeClient;
+        return FeClient.map(entity) as FeClient;
       default:
         console.log('RETURNING GENERAL');
-        return AbstractAdapter;
+        return AbstractAdapter.map(entity);
     }
   }
 }

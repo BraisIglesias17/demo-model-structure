@@ -11,18 +11,8 @@ export class FeClientService {
 
   public getClients(): Observable<FeClient[]> {
     return this.apiService.getClients().pipe(
-      tap((clientes) =>
-        console.log('\x1b[31m', 'THROUGH FEATURES LIBRARY ', clientes)
-      ),
       map((clientes: ApiClient[]) =>
         clientes.map((cliente) => FeClient.map(cliente) as FeClient)
-      ),
-      tap((clientes) =>
-        console.log(
-          '\x1b[31m',
-          'API LIBRARY RETURNING FORMATTED CLIENTS ',
-          clientes
-        )
       )
     );
   }

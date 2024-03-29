@@ -7,11 +7,15 @@
   "
 >
     <ng-container *ngIf="apiClientes$ | async as clientes">
-          <app-display-model [title]="'Clients (Features implementation adapter)'" [content]="clientes"></app-display-model>
+          <app-display-model [title]="'Clients from API'" [content]="clientes"></app-display-model>
       </ng-container>
+
+      <ng-container *ngIf="feClientes$ | async as clientes">
+        <app-display-model [title]="'Clients from Features'" [content]="clientes"></app-display-model>
+    </ng-container>
     
     <ng-container *ngIf="apiPaycard$ | async as paycards">
-          <app-display-model [title]="'Paycard (No features implementation adapter)'" [content]="paycards"></app-display-model>
+          <app-display-model [title]="'Paycard from API'" [content]="paycards"></app-display-model>
       </ng-container>
 
 </div>

@@ -21,8 +21,7 @@ export class Aplicacion {
       .pipe(
         map((clients) => {
           if (clients && clients.length > 0) {
-            const mapper = AdapterFactory.create(clients[0]);
-            return clients.map((client) => mapper.map(client));
+            return clients.map((client) => AdapterFactory.adapt(client));
           }
           return [];
         }),
@@ -38,8 +37,7 @@ export class Aplicacion {
       .pipe(
         map((paycards) => {
           if (paycards && paycards.length > 0) {
-            const mapper = AdapterFactory.create(paycards[0]);
-            return paycards.map((paycard) => mapper.map(paycard));
+            return paycards.map((paycard) => AdapterFactory.adapt(paycard));
           }
           return [];
         }),

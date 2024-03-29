@@ -21,8 +21,7 @@ export class MainLayoutComponent implements OnInit {
     map((clients) => {
       if (clients && clients.length > 0) {
         
-        const mapper = AdapterFactory.create(clients[0]);
-        const feMapper= clients.map((client) => mapper.map(client))
+        const feMapper= clients.map((client) => AdapterFactory.adapt(client));
         const appFinalModel=feMapper.map((feClient) => Client.map(feClient as IApiClient));
 
         return {api:clients,features:feMapper,app:appFinalModel}
@@ -34,17 +33,18 @@ export class MainLayoutComponent implements OnInit {
   apiPaycard$=this.apiPaycardService.getPaycards().pipe(
         map((paycards) => {
           if (paycards && paycards.length > 0) {
-            const mapper = AdapterFactory.create(paycards[0]);
-            return paycards.map((paycard) => mapper.map(paycard)).map((fePaycard) => Paycard.map(fePaycard as IApiPaycard));
+            return paycards.map((paycard) => AdapterFactory.adapt(paycard)).map((fePaycard) => Paycard.map(fePaycard as IApiPaycard));
           }
           return [];
         })
       );
+    
+    feClientes$ = this.feClientService.getClients();
       
   constructor(
     private apiService: ClientApiService,
+    private feClientService: FeClientService,
     private apiPaycardService: PaycardApiService,
-    private feService: FeClientService,
     private aplicacion: Aplicacion
   ) {
     this.aplicacion.ejemplo();
