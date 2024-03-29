@@ -4,7 +4,7 @@ import { map, tap } from 'rxjs/operators';
 import { AdapterFactory } from '../features/models/adapter/adapter.factory';
 import { PaycardApiService } from '../api/service/paycard.service';
 import { Client } from './models/client.model';
-import { IApiClient } from '../api/model/client.model';
+import { ApiClient, IApiClient } from '../api/model/client.model';
 import { IApiPaycard } from '../api/model/paycard.model';
 import { Paycard } from './models/paycard.model';
 
@@ -28,7 +28,7 @@ export class Aplicacion {
         map((feClients) =>
           feClients.map((feClient) => Client.map(feClient as IApiClient))
         ),
-        tap((res) => console.log(res))
+        tap((res) => {console.log(res); res.map((re)=>console.log(re))})
       )
       .subscribe();
 

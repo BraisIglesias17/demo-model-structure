@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { IApiClient } from 'src/app/core/api/model/client.model';
-import { IApiPaycard } from 'src/app/core/api/model/paycard.model';
+import { ApiClient, IApiClient } from 'src/app/core/api/model/client.model';
+import { ApiPaycard, IApiPaycard } from 'src/app/core/api/model/paycard.model';
 import { ClientApiService } from 'src/app/core/api/service/client.service';
 import { PaycardApiService } from 'src/app/core/api/service/paycard.service';
 import { Aplicacion } from 'src/app/core/app/ejemplo';
 import { Client } from 'src/app/core/app/models/client.model';
 import { Paycard } from 'src/app/core/app/models/paycard.model';
 import { AdapterFactory } from 'src/app/core/features/models/adapter/adapter.factory';
+import { ModelExtension } from 'src/app/core/features/models/adapter/registry';
 import { FeClientService } from 'src/app/core/features/services/fe-client.service';
 
 @Component({

@@ -11,10 +11,13 @@ export class ApiClient {
   surname: string = '';
   birthdate: Date = new Date();
 
-  constructor(data: Cliente) {
-    (this.name = data.nombre),
+  constructor(data?: Cliente) {
+    if(data){
+      (this.name = data.nombre),
       (this.surname = data.apellido),
       (this.birthdate = new Date(data.fechaDeNacimiento));
+    }
+    
   }
   public static adaptFromApi(data: Cliente): ApiClient {
     return new ApiClient(data);

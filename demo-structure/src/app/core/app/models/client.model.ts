@@ -1,7 +1,11 @@
-import { IApiClient } from '../../api/model/client.model';
+import { ApiClient, IApiClient } from '../../api/model/client.model';
+import { ModelExtension } from '../../features/models/adapter/registry';
 
-export class Client {
+
+export class Client extends ApiClient{
+
   constructor(data?: Partial<IApiClient>) {
+    super();
     Object.assign(this, data);
   }
 

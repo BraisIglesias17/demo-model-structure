@@ -6,4 +6,16 @@ export const CLIENTES = [
   },
 ];
 
-export const TARJETAS = [{ codigo: 'sdfsdfsds' }, { codigo: 'asdasad' }];
+export const TARJETAS = [
+  { codigo: 'sdfsdfsds', 
+    saldo:{
+      divisa:'EUR',cantidad:50.0
+    } 
+  }
+  , 
+  { codigo: 'asdasad', 
+    saldo:{
+      divisa:'EUR',cantidad:50.0
+    } 
+  }
+];
