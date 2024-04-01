@@ -1,13 +1,13 @@
 import { ApiClient, IApiClient } from 'src/app/core/api/model/client.model';
 import { AbstractAdapter } from '../adapter/adapter.factory';
-import { ModelExtension } from '../adapter/registry';
+import { Model } from '../adapter/registry';
 
 export interface IFeClient extends IApiClient {
   age: Date;
 }
 
-@ModelExtension.register(ApiClient)
-export class FeClient  extends ApiClient{
+@Model.register
+export class FeClient extends ApiClient {
   fullName: string = '';
   age: number = 0;
 
@@ -16,12 +16,14 @@ export class FeClient  extends ApiClient{
     if (data) {
       this.name = data.name;
       this.surname = data.surname;
+      this.birthdate = data.birthdate;
       this.fullName = data.name + ' ' + data.surname;
       this.age = new Date().getFullYear() - data.birthdate.getFullYear();
     }
   }
 
   static map<T, FeClient>(entity: T): FeClient {
+    console.log('FECLIENT ADAPTER');
     const data = entity as unknown as ApiClient;
     return new FeClient(data) as unknown as FeClient;
   }

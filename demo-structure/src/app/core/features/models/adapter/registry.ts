@@ -1,16 +1,14 @@
+export namespace Model {
+  const extendedModels: { [key: string]: Function } = {};
 
-export namespace ModelExtension {
-    const extendedModels: { [key: string]: Function } = {};
+  export function register(target: any) {
+    const instance = new target();
 
-    export function register(base: Function) {
-        return function (constructor: Function) {
-            const baseClassName = base.prototype.constructor.name;
-            extendedModels[baseClassName] = constructor;
-        }
-    }
-    
-    export function getExtendedModel(base: Function){
-        const baseClassName = base.prototype.constructor.name;
-        return extendedModels[baseClassName] ? extendedModels[baseClassName] : base;
-    }
+    extendedModels[Object.getPrototypeOf(instance.constructor).name] =
+      target.map;
+  }
+
+  export function getMap() {
+    return extendedModels;
+  }
 }
