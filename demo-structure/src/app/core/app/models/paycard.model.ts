@@ -1,11 +1,12 @@
-import { IApiPaycard } from '../../api/model/paycard.model';
+import { ApiPaycard } from '../../api/model/paycard.model';
 
-export class Paycard {
-  constructor(data?: IApiPaycard) {
+export class Paycard extends ApiPaycard {
+  constructor(data?: Paycard) {
+    super();
     Object.assign(this, data);
   }
 
-  static map(data: IApiPaycard) {
+  static map(data: Paycard) {
     return new Paycard(data);
   }
 }

@@ -4,9 +4,9 @@ import { map, tap } from 'rxjs/operators';
 import { AdapterFactory } from '../features/models/adapter/adapter.factory';
 import { PaycardApiService } from '../api/service/paycard.service';
 import { Client } from './models/client.model';
-import { ApiClient, IApiClient } from '../api/model/client.model';
-import { IApiPaycard } from '../api/model/paycard.model';
+import { ApiClient } from '../api/model/client.model';
 import { Paycard } from './models/paycard.model';
+import { ApiPaycard } from '../api/model/paycard.model';
 
 @Injectable({ providedIn: 'root' })
 export class Aplicacion {
@@ -21,14 +21,17 @@ export class Aplicacion {
       .pipe(
         map((clients) => {
           if (clients && clients.length > 0) {
-            return clients.map((client) => AdapterFactory.adapt(client));
+            return clients.map((client) =>
+              AdapterFactory.adapt<ApiClient, Client>(client)
+            );
           }
           return [];
         }),
-        map((feClients) =>
-          feClients.map((feClient) => Client.map(feClient as IApiClient))
-        ),
-        tap((res) => {console.log(res); res.map((re)=>console.log(re))})
+        map((feClients) => feClients.map((feClient) => Client.map(feClient))),
+        tap((res) => {
+          console.log(res);
+          res.map((re) => console.log(re));
+        })
       )
       .subscribe();
 
@@ -42,7 +45,7 @@ export class Aplicacion {
           return [];
         }),
         map((fePaycards) =>
-          fePaycards.map((fePaycard) => Paycard.map(fePaycard as IApiPaycard))
+          fePaycards.map((fePaycard) => Paycard.map(fePaycard as ApiPaycard))
         ),
         tap((res) => console.log(res))
       )
