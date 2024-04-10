@@ -1,0 +1,6 @@
+{
+    "DEFAULT":"Default message",
+    "PRUEBA":"Proof of work",
+    "ERR_01":"Client not found",
+    "ERR_02":"Invalid client"
+}

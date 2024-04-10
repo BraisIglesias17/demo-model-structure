@@ -1,0 +1,6 @@
+{
+    "DEFAULT":"Mensaje por defecto",
+    "PRUEBA":"Mensaje de prueba",
+    "ERR_01":"No existe el cliente",
+    "ERR_02":"Cliente no valido"
+}

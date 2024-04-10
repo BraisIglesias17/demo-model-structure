@@ -6,16 +6,30 @@
     align-items: center;
   "
 >
-    <ng-container *ngIf="apiClientes$ | async as clientes">
-          <app-display-model [title]="'Clients from API'" [content]="clientes"></app-display-model>
-      </ng-container>
+  <ng-container *ngIf="apiClientes$ | async as clientes">
+    <app-display-model
+      [title]="'Clients from API'"
+      [content]="clientes"
+    ></app-display-model>
+  </ng-container>
 
-      <ng-container *ngIf="feClientes$ | async as clientes">
-        <app-display-model [title]="'Clients from Features'" [content]="clientes"></app-display-model>
-    </ng-container>
-    
-    <ng-container *ngIf="apiPaycard$ | async as paycards">
-          <app-display-model [title]="'Paycard from API'" [content]="paycards"></app-display-model>
-      </ng-container>
+  <ng-container *ngIf="feClientes$ | async as clientes">
+    <app-display-model
+      [title]="'Clients from Features'"
+      [content]="clientes"
+    ></app-display-model>
+  </ng-container>
 
+  <ng-container *ngIf="apiPaycard$ | async as paycards">
+    <app-display-model
+      [title]="'Paycard from API'"
+      [content]="paycards"
+    ></app-display-model>
+  </ng-container>
+
+  <div class="translate">
+    <pre>{{ key | translate }}</pre>
+    <button (click)="onClickButton()">Change text</button>
+    <button (click)="onClickButtonLang()">Change Lang</button>
+  </div>
 </div>
